@@ -3,26 +3,29 @@ import { Movie } from '../movie';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { MoviesService } from '../movies.service';
+
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
-  styleUrls: ['./movies.component.scss']
+  styleUrls: ['./movies.component.scss'],
+  providers: ['MoviesService']
 })
 export class MoviesComponent implements OnInit {
   movies: Movie[]
-  constructor(private _http: Http) { }
+  constructor(private _http: Http, private _moviesService: MoviesService) { }
 
   ngOnInit() {
-    this.getMovies();
+    movies = this._moviesService.getMovies();
   }
   
-  getMovies() {
-    this._http.get('http://farhad.com:8080/movies')
-	  .map((res: Response) => res.json())
-	  .subscribe(
-	    data => { this.movies = data },
-		err => console.error(err),
-		() => console.log(this.movies)
-	  );
-  }
+ 
+
+
+
+
+
+
+
+  
 }
