@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: 'movies',
     component: MoviesComponent
-  }
+  },
 ];
 
 @NgModule({
