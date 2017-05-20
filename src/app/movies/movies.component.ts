@@ -9,23 +9,18 @@ import { MoviesService } from '../movies.service';
   selector: 'app-movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.scss'],
-  providers: ['MoviesService']
+  providers: [MoviesService]
 })
+
 export class MoviesComponent implements OnInit {
-  movies: Movie[]
+  movies: Movie[];
   constructor(private _http: Http, private _moviesService: MoviesService) { }
 
   ngOnInit() {
-    movies = this._moviesService.getMovies();
+    this._moviesService.getMovies()
+	  .subscribe(
+	    movies => this.movies = movies);
+	console.log(this.movies);
   }
-  
- 
-
-
-
-
-
-
-
   
 }

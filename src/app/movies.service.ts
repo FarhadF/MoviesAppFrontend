@@ -2,19 +2,16 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { Movie } from './movie';
 
 @Injectable()
 export class MoviesService {
-baseUrl: string = 'farhad.com:8080/';
-movies: Movie[]
+baseUrl: string = 'http://127.0.0.1:8080/';
   constructor(private _http: Http) { }
   getMovies(){
-    this._http.get(baseUrl + 'movies')
-	  .map((res:Response)) => res.json())
-	  .subscribe(
-	    data => { this.movies = data }
-		err => console.error(err)
-		);
+    return this._http.get(this.baseUrl + 'movies')
+	  .map((res:Response) => <Movie[]>res.json());
+	  
 		}
 
 
