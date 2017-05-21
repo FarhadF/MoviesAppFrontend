@@ -1,7 +1,7 @@
 <div>
   <ul>
     <li *ngFor="let movie of movies">
-      {{movie.name}}
+      <a [routerLink]="['/movie', movie.id]">{{movie.name}}</a>
     </li>
   </ul>
 
