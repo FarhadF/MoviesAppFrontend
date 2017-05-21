@@ -15,9 +15,19 @@ const routes: Routes = [
     component: HomeComponent
   },
   { 
-    path: 'movie/:id',
-    component: MovieDetailsComponent,
-	pathMatch: 'full'
+    path: 'movie',
+    children: [
+	  { 
+	    path: 'new',
+		component: NewMovieComponent,
+		pathMatch: 'full'
+	  },
+	  {
+	    path: ':id',
+		component: MovieDetailsComponent,
+		pathMatch: 'full'
+	  },
+	]
   },
   {
     path: 'movie/new',
