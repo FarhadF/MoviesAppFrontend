@@ -5,6 +5,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Movie } from './movie';
+import { Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
 export class MoviesService {
@@ -20,8 +21,17 @@ baseUrl: string = 'http://127.0.0.1:8080/';
 	return this.http.get(this.baseUrl + `movie/${id}`)
 	  .map((res:Response) => <Movie>res.json())
 	  .catch(this.handleError);
+  }
 	//    console.log("status: ", res.status);
+  newMovie(body: string): Observable<Movie> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    console.log("NewMovie: ", body);
+	return this.http.post(this.baseUrl + "movie/new", body, options)
+	  				.map((res:Response) => res.json())
+					.catch(this.handleError);
 }
+
   private handleError (error: Response | any) {
       // In a real world app, you might use a remote logging infrastructure
       let errMsg: string;
