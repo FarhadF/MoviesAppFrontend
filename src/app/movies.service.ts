@@ -30,7 +30,15 @@ baseUrl: string = 'http://127.0.0.1:8080/';
 	return this.http.post(this.baseUrl + "movie", body, options)
 	  				.map((res:Response) => res.json())
 					.catch(this.handleError);
-}
+  }
+  editMovie(body: string, id: number): Observable<Movie> {
+    console.log("editMovieService: ", id);
+	let headers = new Headers({ 'Content-Type': 'application/json' });
+	let options = new RequestOptions({ headers: headers });
+	return this.http.post(this.baseUrl + id + "/edit", body, options)
+	                .map((res:Response) => res.json())
+					.catch(this.handleError);
+  }
 
   private handleError (error: Response | any) {
       // In a real world app, you might use a remote logging infrastructure

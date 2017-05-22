@@ -1,0 +1,14 @@
+<div class="container">
+  <h1> Edit Movie</h1>
+  <form (ngSubmit)="onSubmit(movieForm)" #movieForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="movie.name" required />
+      <label for="year">Year</label>
+      <input type="text" class="form-control" name="year" [(ngModel)]="movie.year" required />
+      <label for="director">Director</label>
+      <input type="text" class="form-control" name="director" [(ngModel)]="movie.director" required />
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
