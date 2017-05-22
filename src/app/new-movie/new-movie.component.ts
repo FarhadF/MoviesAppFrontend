@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../movie';
 import { MoviesService } from '../movies.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-movie',
@@ -10,7 +11,7 @@ import { MoviesService } from '../movies.service';
 })
 export class NewMovieComponent implements OnInit {
 
-  constructor(private moviesService: MoviesService) { }
+  constructor(private moviesService: MoviesService, private router: Router) { }
   movie: Movie;
   ngOnInit() {
   }
@@ -20,7 +21,7 @@ export class NewMovieComponent implements OnInit {
 	  console.log(JSON.stringify(f.value));
       this.moviesService.newMovie(JSON.stringify(f.value))
 	    .subscribe(
-		  movie => this.movie = movie,
+		  movie => {this.movie = movie; this.router.navigate(['/movies']);} ,
 		  error => console.log("error in new movie component")
 		  );
   }
