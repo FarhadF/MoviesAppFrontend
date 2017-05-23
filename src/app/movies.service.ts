@@ -35,7 +35,7 @@ baseUrl: string = 'http://127.0.0.1:8080/';
     console.log("editMovieService: ", id);
 	let headers = new Headers({ 'Content-Type': 'application/json' });
 	let options = new RequestOptions({ headers: headers });
-	return this.http.post(this.baseUrl + id + "/edit", body, options)
+	return this.http.post(this.baseUrl + "movie/" + id + "/edit", body, options)
 	                .map((res:Response) => res.json())
 					.catch(this.handleError);
   }

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../movie';
 import { MoviesService } from '../movies.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import 'rxjs/Rx';
+
 @Component({
   selector: 'app-edit-movie',
   templateUrl: './edit-movie.component.html',
@@ -9,20 +12,19 @@ import { ActivatedRoute } from '@angular/router';
   providers: [MoviesService]
 })
 export class EditMovieComponent implements OnInit {
-  movie: Movie;
+   movie: Movie;
   id: number;
   private sub: any
-  constructor(private moviesService: MoviesService, private route: ActivatedRoute) { }
+  constructor(private moviesService: MoviesService, private route: ActivatedRoute, private router: Router) { }
   onSubmit(f) {
     console.log(JSON.stringify(f.value));
-	this.sub = this.route.params.subscribe( params => {
-	  this.id = +params['id'];
-	  console.log("id: ", this.id);
-      this.moviesService.editMovie(JSON.stringify(f.value), this.id)
-	  .subscribe(
-	    movie =>  this.movie = movie
-		);
-	});
+    this.moviesService.editMovie(JSON.stringify(f.value), this.id)
+	  //.finally(() => this.router.navigate(['movies']))
+      .subscribe(
+	    movie => { this.movie = movie; this.router.navigate(['movies']);},
+		error => console.log("onSubmit-EditMovie",error)
+
+	  );
   }
 
   ngOnInit() {
@@ -30,8 +32,7 @@ export class EditMovieComponent implements OnInit {
       this.id = +params['id']; });
       this.moviesService.getMovie(this.id)
 	  .subscribe(
-	    movie => this.movie = movie);
-	console.log(this.movie)
+	    (movie) => { this.movie = movie; });
   }
 
 }
