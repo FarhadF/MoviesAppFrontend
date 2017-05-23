@@ -1,11 +1,13 @@
-<h1> {{ movie?.name }} Details: </h1>
-<div>
+
+<div class="container">
+  <h2> {{ movie?.name }} Details: </h2>
   <ul>
     <li> Name: {{ movie?.name }} </li>
     <li> Year: {{ movie?.year }} </li>
     <li> Director: {{ movie?.director }} </li>
-    <li> id: {{ movie?.id }} </li>
+
   </ul>
-  <button class="btn btn-primary" [routerLink]="['/movie', movie?.id, 'edit']">Edit</button>
+  <button class="btn btn-success" [routerLink]="['/movie', movie?.id, 'edit']">Edit</button>
+  <button class="btn btn-primary" [routerLink]="['/movies']">Back</button>
 </div>
 
