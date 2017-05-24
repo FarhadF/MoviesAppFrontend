@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { NewMovieComponent } from './new-movie/new-movie.component';
 import { EditMovieComponent } from './edit-movie/edit-movie.component';
+import { DeleteMovieComponent } from './delete-movie/delete-movie.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { EditMovieComponent } from './edit-movie/edit-movie.component';
 	MovieDetailsComponent,
 	NewMovieComponent,
 	EditMovieComponent,
+	DeleteMovieComponent,
 
   ],
   imports: [

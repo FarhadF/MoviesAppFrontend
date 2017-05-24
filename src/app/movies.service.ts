@@ -40,6 +40,14 @@ baseUrl: string = 'http://127.0.0.1:8080/';
 					.catch(this.handleError);
   }
 
+  deleteMovie(id: number): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+	return this.http.delete(this.baseUrl +"movie/" + id, options)
+	  .map((res:Response) => res.json())
+	  .catch(this.handleError);
+  }
+
   private handleError (error: Response | any) {
       // In a real world app, you might use a remote logging infrastructure
       let errMsg: string;
