@@ -6,6 +6,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { NewMovieComponent } from './new-movie/new-movie.component';
 import { EditMovieComponent } from './edit-movie/edit-movie.component';
 import { DeleteMovieComponent } from './delete-movie/delete-movie.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,11 @@ const routes: Routes = [
   {
     path: 'movie/new',
 	component: NewMovieComponent,
+	pathMatch: 'full'
+  },
+  {
+    path: 'login',
+	component: LoginComponent,
 	pathMatch: 'full'
   }
 

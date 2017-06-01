@@ -11,7 +11,13 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { NewMovieComponent } from './new-movie/new-movie.component';
 import { EditMovieComponent } from './edit-movie/edit-movie.component';
 import { DeleteMovieComponent } from './delete-movie/delete-movie.component';
+import { Http, RequestOptions } from '@angular/http';
+import { AuthHttp, AuthConfig } from 'angular2-jwt';
+import { LoginComponent } from './login/login.component';
 
+export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+  return new AuthHttp(new AuthConfig(), http, options);
+}
 
 @NgModule({
   declarations: [
@@ -22,6 +28,7 @@ import { DeleteMovieComponent } from './delete-movie/delete-movie.component';
 	NewMovieComponent,
 	EditMovieComponent,
 	DeleteMovieComponent,
+	LoginComponent,
 
   ],
   imports: [
@@ -30,7 +37,13 @@ import { DeleteMovieComponent } from './delete-movie/delete-movie.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {   
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [Http, RequestOptions]
+    } 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

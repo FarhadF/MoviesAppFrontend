@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from '../movie';
 import { MoviesService } from '../movies.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import 'rxjs/Rx';
 
 @Component({
@@ -36,3 +35,4 @@ export class EditMovieComponent implements OnInit {
   }
 
 }
+
