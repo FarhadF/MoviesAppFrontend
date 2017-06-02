@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Login</h1>
   <div class="alert alert-danger" *ngIf="errorHandler">
-    <strong>Error!</strong> Invalid Email or Password.
+    <strong>Error:</strong> Invalid Email or Password.
   </div>
   <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
     <div class="form-group">
