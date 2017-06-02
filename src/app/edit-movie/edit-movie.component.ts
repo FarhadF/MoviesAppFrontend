@@ -21,8 +21,11 @@ export class EditMovieComponent implements OnInit {
 	  //.finally(() => this.router.navigate(['movies']))
       .subscribe(
 	    movie => { this.movie = movie; this.router.navigate(['movies']);},
-		error => console.log("onSubmit-EditMovie",error)
-
+		error => { console.log("onSubmit-EditMovie",error);
+		           if (error === "No JWT present or has expired") {
+				     this.router.navigate(['/login']);
+					 }
+				 }
 	  );
   }
 

@@ -18,7 +18,11 @@ export class DeleteMovieComponent implements OnInit {
 	  this.id = +params['id'];}
 	);
 	this.moviesService.deleteMovie(this.id).subscribe(
-	  data => this.router.navigate(['movies'])
+	  data => this.router.navigate(['movies']),
+	  error => { if (error === "No JWT present or has expired") {
+	               this.router.navigate(['/login']);
+			     }
+			   }
 	  );
   }
 
