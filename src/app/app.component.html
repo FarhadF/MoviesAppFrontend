@@ -16,7 +16,10 @@
         <a class="nav-link " routerLink='/movie/new' [routerLinkActive]="['active']">Add</a>
       </li>
 	  <li>
-	    <a class="nav-link" routerLink='/login' [routerLinkActive]="['active']">Login</a>
+	    <a class="nav-link" *ngIf="!authService.authenticated" routerLink='/login' [routerLinkActive]="['active']">Login</a>
+	  </li>
+	  <li>
+	    <a class="nav-link" *ngIf="authService.authenticated" (click)="authService.logout()" routerLink='/'>Logout</a>
 	  </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
