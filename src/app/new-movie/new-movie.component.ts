@@ -22,7 +22,12 @@ export class NewMovieComponent implements OnInit {
       this.moviesService.newMovie(JSON.stringify(f.value))
 	    .subscribe(
 		  movie => {this.movie = movie; this.router.navigate(['/movies']);} ,
-		  error => console.log("error in new movie component")
+		  error => { 
+		             console.log("error in new movie component",error);
+		             if (error === "No JWT present or has expired") {
+					   this.router.navigate(['/login']);
+					 }
+				   }
 		  );
   }
 }
