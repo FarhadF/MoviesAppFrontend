@@ -13,6 +13,7 @@ export class NewMovieComponent implements OnInit {
 
   constructor(private moviesService: MoviesService, private router: Router) { }
   movie: Movie;
+  requiredFields: boolean
   ngOnInit() {
   }
   onSubmit(f) {
@@ -26,6 +27,9 @@ export class NewMovieComponent implements OnInit {
 		             console.log("error in new movie component",error);
 		             if (error === "No JWT present or has expired") {
 					   this.router.navigate(['/login']);
+					 }
+					 if (error.includes("fill the required fields")) {
+					   this.requiredFields = true;
 					 }
 				   }
 		  );
