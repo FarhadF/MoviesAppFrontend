@@ -1,5 +1,8 @@
 <div class="container">
   <h1> Edit Movie</h1>
+  <div class="alert alert-danger" *ngIf="requiredFields">
+    <strong>Error:</strong> All fields are required.
+  </div>
   <form *ngIf="movie" (ngSubmit)="onSubmit(movieForm)" #movieForm="ngForm">
     <div class="form-group">
       <label for="name">Name</label>

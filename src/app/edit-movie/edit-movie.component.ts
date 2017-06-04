@@ -11,7 +11,8 @@ import 'rxjs/Rx';
   providers: [MoviesService]
 })
 export class EditMovieComponent implements OnInit {
-   movie: Movie;
+  movie: Movie;
+  requiredFields: boolean 
   id: number;
   private sub: any
   constructor(private moviesService: MoviesService, private route: ActivatedRoute, private router: Router) { }
@@ -24,6 +25,9 @@ export class EditMovieComponent implements OnInit {
 		error => { console.log("onSubmit-EditMovie",error);
 		           if (error === "No JWT present or has expired") {
 				     this.router.navigate(['/login']);
+					 }
+				   if (error.includes("fill the required fields")) {
+				     this.requiredFields = true;
 					 }
 				 }
 	  );
