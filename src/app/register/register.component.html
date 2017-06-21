@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Register</h1>
-  <div class="alert alert-danger" *ngIf="errorHandler">
-    <strong>Error:</strong> Invalid Email or Password. {{ error }} 
+  <div class="alert alert-danger" *ngIf="errMessage">
+    <strong>Error:</strong> {{ errMessage }}. 
   </div>
   <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
     <div class="form-group">
