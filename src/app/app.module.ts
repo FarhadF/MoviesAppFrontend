@@ -14,6 +14,7 @@ import { DeleteMovieComponent } from './delete-movie/delete-movie.component';
 import { Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig(), http, options);
@@ -29,6 +30,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 	EditMovieComponent,
 	DeleteMovieComponent,
 	LoginComponent,
+	RegisterComponent,
 
   ],
   imports: [
