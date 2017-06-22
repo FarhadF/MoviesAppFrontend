@@ -20,13 +20,10 @@ export class LoginComponent implements OnInit {
 	    data => { if (data.token) {
 		    localStorage.setItem('token', data.token);
 			this.router.navigate(['/']);
-		  } else if (data.error) {
-		      console.log(data);
-			  this.errorHandler=true
 		  }
 		  },
 
-		error => console.log(error)
+		error => {console.log(error); this.errorHandler=true; }
 	);
 	}
 
